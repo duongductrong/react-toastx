@@ -56,15 +56,12 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "^3.4.1",
+    "sass": "^1.48.0",
     "typescript": "^3.7.5",
     "webpack-cli": "^4.9.1"
   },
   "files": [
     "dist"
   ],
-  "dependencies": {
-    "@types/classnames": "^2.3.1",
-    "classnames": "^2.3.1",
-    "sass": "^1.44.0"
-  }
+  "dependencies": {}
 }

@@ -1,4 +1,3 @@
-import classNames from 'classnames';
 import React, { FC, useEffect, useState } from 'react';
 import useToastCore from '../../hooks/useToastCore';
 import ToastIcon from '../ToastIcon/ToastIcon';
@@ -90,11 +89,7 @@ const Toast: FC<Toast.Props> = ({ type, message, closeTimeout, filled, _id }) =>
 
   return (
     <div
-      className={classNames('toast', {
-        'toast--remove': readyDestroy,
-        'toast--filled' : filled,
-        [`toast--${type}`]: true
-      })}
+      className={`toast ${`toast--${type}`} ${readyDestroy ? 'toast--remove' : ""} ${filled ? 'toast--filled' : ""}`.trim()}
     >
       <div className="toast__icon">
         <ToastIcon type={type} filled={filled} />
