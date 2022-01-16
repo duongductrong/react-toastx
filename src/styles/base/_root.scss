@@ -1,0 +1,9 @@
+@import './variables';
+
+:root {
+  --toast-yoyogen-white: #{$white};
+  --toast-yoyogen-dark: #{$dark};
+  --toast-yoyogen-success: #{$success};
+  --toast-yoyogen-error: #{$error};
+  --toast-yoyogen-warning: #{$warning};
+}

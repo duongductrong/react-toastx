@@ -1,10 +1,9 @@
-import * as React from 'react'
-import styles from './styles.module.css'
+import ToastProvider from './context/ToastProvider';
+import withToast from './HOC/withToast';
+import useToast from './hooks/useToast';
+import { withToastProps } from './HOC/withToast';
+import { useToastProps } from './hooks/useToast';
 
-interface Props {
-  text: string
-}
+import './styles/app.scss';
 
-export const ExampleComponent = ({ text }: Props) => {
-  return <div className={styles.test}>Example Component: {text}</div>
-}
+export { ToastProvider, useToast, withToast, withToastProps, useToastProps };

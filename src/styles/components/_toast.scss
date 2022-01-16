@@ -1,0 +1,149 @@
+@import "../base/variables";
+
+.toast {
+  position: relative;
+  visibility: hidden;
+  opacity: 0;
+
+  display: inline-flex;
+  align-items: center;
+
+  min-height: 30px;
+  min-width: 280px;
+  max-width: 320px;
+  border-radius: 5px;
+  box-shadow: 0 2px 8px rgba($color: $dark, $alpha: 0.12);
+  padding: 15px 20px 15px 50px;
+  background-color: $dark;
+  color: $white;
+  overflow: hidden;
+
+  cursor: pointer;
+
+  transition: all 300ms ease;
+
+  animation: animateOpenToast 300ms ease forwards;
+
+  .toast__icon {
+    position: absolute;
+    top: 50%;
+    left: 15px;
+    transform: translateY(-50%);
+    line-height: 0;
+  }
+
+  .toast__message {
+    font-weight: 500;
+    margin: 0;
+    font-size: 0.875rem;
+    padding-right: 30px;
+
+    a {
+      color: $white;
+    }
+  }
+
+  .toast__progress {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+
+    width: 100%;
+    height: 4px;
+
+    animation: timeoutAnimate linear forwards;
+    animation-play-state: running;
+  }
+
+  .toast__close {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 8px;
+    padding: 8px;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 300ms ease;
+
+    svg {
+      width: 14px;
+      height: 14px;
+      fill: $white;
+    }
+
+    &:hover {
+      background-color: rgba($color: $white, $alpha: 0.08);
+    }
+  }
+
+  &.toast--pausing {
+    .toast-progress {
+      animation-play-state: paused;
+    }
+  }
+
+  &.toast--remove {
+    animation: animateCloseToast 300ms ease forwards;
+  }
+
+  @each $name, $colorMap in $colors {
+    &.toast--#{$name} {
+      .toast__progress {
+        background-color: map-get($map: $colorMap, $key: "color");
+      }
+    }
+  }
+
+  // Modify filled stylesheets
+  &.toast--filled {
+    @each $name, $colorMap in $colors {
+      &.toast--#{$name} {
+        background-color: map-get($map: $colorMap, $key: "color");
+      }
+    }
+
+    .toast__progress {
+      background-color: rgba($color: $white, $alpha: 0.4);
+    }
+  }
+}
+
+@keyframes animateOpenToast {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  to {
+    transform: translateX(0);
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+@keyframes animateCloseToast {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+    visibility: visible;
+  }
+  to {
+    transform: translateX(100%);
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+@keyframes timeoutAnimate {
+  from {
+    width: 100%;
+  }
+  to {
+    width: 0;
+  }
+}

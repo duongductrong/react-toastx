@@ -1,7 +1,15 @@
-import './index.css'
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { ToastProvider } from 'react-toastx';
+import App from './App';
+import './index.css';
+import 'react-toastx/dist/app.css';
+import AppClassComponent from './AppClassComponent';
 
-import React from 'react'
-import ReactDOM from 'react-dom'
-import App from './App'
-
-ReactDOM.render(<App />, document.getElementById('root'))
+ReactDOM.render(
+  <ToastProvider>
+    <App />
+    <AppClassComponent />
+  </ToastProvider>,
+  document.getElementById('root')
+);
