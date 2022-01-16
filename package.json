@@ -1,10 +1,23 @@
 {
   "name": "react-toastx",
   "version": "1.0.0",
-  "description": "To provide the toast notification use react core",
-  "author": "duongductrong",
+  "description": "The toast notification help developer building app for react-app",
+  "author": "https://github.com/duongductrong",
   "license": "MIT",
-  "repository": "duongductrong/react-toastx",
+  "homepage": "https://github.com/duongductrong/react-toastx#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/duongductrong/react-toastx"
+  },
+  "bugs": {
+    "url": "https://github.com/duongductrong/react-toastx/issues"
+  },
+  "keywords": [
+    "toast",
+    "toastify",
+    "react-toastify",
+    "react-toastx"
+  ],
   "main": "dist/index.js",
   "module": "dist/index.modern.js",
   "source": "src/index.tsx",
