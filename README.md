@@ -24,6 +24,9 @@ We need find a root component and assign Provider same below
 ```tsx
 import { ToastProvider } from 'react-toastx'
 
+// Remember to add css to root 
+import 'react-toastx/dist/app.css';
+
 // You can add here index.[tsx,jsx]
 // Or any where can a root of your component
 ReactDOM.render(
@@ -119,6 +122,11 @@ export default withToast(SomeComponentUseClass);
 | onClick      | void                                     |                      |
 
 # Changelog
+| Version | Description                                                 |
+| ------- | ----------------------------------------------------------- |
+| 1.0.0   | Publish package                                             |
+| 1.0.1   | Fix the error wrong position toast stack in another project |
+
 
 
 ## License

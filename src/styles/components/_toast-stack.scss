@@ -35,8 +35,9 @@ $widthStack: 320px;
   }
 
   .toast-stack__top-right {
-    right: 50px;
+    right: 15px;
     top: 15px;
+    text-align: right;
 
     & > * {
       margin-bottom: 0.875rem;
@@ -76,7 +77,8 @@ $widthStack: 320px;
 
   .toast-stack__bottom-right {
     bottom: 15px;
-    right: 50px;
+    right: 15px;
+    text-align: right;
 
     & > * {
       margin-top: 0.875rem;
