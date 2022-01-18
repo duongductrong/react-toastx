@@ -24,6 +24,8 @@ const ToastStack: FC<ToastStackProps> = ({}) => {
         type={item.type}
         closeTimeout={item.closeTimeout}
         filled={item.filled}
+        onClose={item.onClose}
+        onOpen={item.onOpen}
       />
     ))
   }

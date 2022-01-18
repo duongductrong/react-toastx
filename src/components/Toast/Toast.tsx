@@ -37,13 +37,25 @@ export namespace Toast {
     /**
      * Events toast
      */
-    onClose?: void,
-    onOpen?: void,
-    onClick?: void,
+    onClose?: Function | void,
+    onOpen?: Function | void,
   }
 }
 
-const Toast: FC<Toast.Props> = ({ type, message, closeTimeout, filled, _id }) => {
+const Toast: FC<Toast.Props> = ({ 
+  type, 
+  message, 
+  closeTimeout, 
+  filled, 
+  _id, 
+  
+  /**
+   * Event callback of toaster
+   * @event 
+   */
+  onOpen,
+  onClose : onCloseCallback, 
+  }) => {
   const [readyDestroy, setReadyDestroy] = useState(false);
   const toast = useToastCore();
 
@@ -57,6 +69,9 @@ const Toast: FC<Toast.Props> = ({ type, message, closeTimeout, filled, _id }) =>
     setTimeout(() => {
       toast.destroy(_id, type);
     }, 305);
+
+    // Callback onclose when toaster closed
+    onCloseCallback && onCloseCallback();
 
     setReadyDestroy(true);
   };
@@ -72,6 +87,9 @@ const Toast: FC<Toast.Props> = ({ type, message, closeTimeout, filled, _id }) =>
     if (closeTimeout) {
       // Timer to add class transition destroy before a real destroy active
       timerTransition = setTimeout(() => {
+        // Callback onclose when toaster closed
+        onCloseCallback && onCloseCallback();
+
         setReadyDestroy(true);
       }, closeTimeout);
 
@@ -85,6 +103,12 @@ const Toast: FC<Toast.Props> = ({ type, message, closeTimeout, filled, _id }) =>
       clearTimeout(timerTransition);
       clearTimeout(timer);
     };
+  }, []);
+
+  // After the toast mounted, we can do it in here
+  useEffect(() => {
+    // Calling event open when the toast mounted
+    onOpen && onOpen();
   }, []);
 
   return (
